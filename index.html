@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            min-height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1624 0%, #1a1f35 50%, #162030 100%);
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse 800px 600px at 10% 20%, rgba(0, 255, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 800px at 90% 80%, rgba(0, 180, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 700px 500px at 50% 50%, rgba(0, 220, 255, 0.08) 0%, transparent 50%);
+            animation: liquidMove1 25s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(40px);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse 900px 700px at 70% 30%, rgba(0, 255, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 500px 700px at 20% 70%, rgba(50, 200, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 600px at 80% 60%, rgba(0, 240, 255, 0.08) 0%, transparent 50%);
+            animation: liquidMove2 30s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+        }
+
+        @keyframes liquidMove1 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(5%, -8%) rotate(120deg) scale(1.1);
+            }
+            66% {
+                transform: translate(-8%, 5%) rotate(240deg) scale(0.95);
+            }
+        }
+
+        @keyframes liquidMove2 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(360deg) scale(1);
+            }
+            33% {
+                transform: translate(-6%, 7%) rotate(240deg) scale(1.05);
+            }
+            66% {
+                transform: translate(7%, -5%) rotate(120deg) scale(0.98);
+            }
+        }
+
+        .particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        nav, section, footer {
+            position: relative;
+            z-index: 10;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #00ffea;
+        }
+
+        .nav-contact-btn {
+            background: #fff;
+            color: #1a1a2e;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-contact-btn:hover {
+            background: #00ffea;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5% 5%;
+            margin-top: 60px;
+            background: transparent;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6rem;
+            width: 100%;
+            max-width: 1400px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 1.8rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text h2 {
+            font-size: 4.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-text .role {
+            color: #00ffea;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: transparent;
+            color: #00ffea;
+            padding: 0.8rem 2rem;
+            border: 2px solid #00ffea;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .contact-btn:hover {
+            background: #00ffea;
+            color: #1a1a2e;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            flex: 0 1 auto;
+        }
+
+        .profile-img {
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #00ffea;
+            box-shadow: 0 0 40px rgba(0, 255, 234, 0.3);
+        }
+
+        .skills-title {
+            text-align: center;
+            padding: 5rem 10% 1rem;
+            background: transparent;
+        }
+
+        .skills-title h2 {
+            font-size: 3rem;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .skills-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem 10% 5%;
+            background: transparent;
+        }
+
+        .feature-card {
+            background: #1a1a2e;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border-radius: 15px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 234, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #00ffea;
+            border-radius: 15px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            padding: 10px;
+        }
+
+        .feature-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .resume-section {
+            text-align: center;
+            padding: 3rem 10%;
+            background: transparent;
+        }
+
+        .resume-link {
+            display: inline-block;
+            color: #00ffea;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 255, 234, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 255, 234, 0.1);
+            font-weight: 600;
+        }
+
+        .resume-link:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 255, 234, 0.1);
+            border-color: #00ffea;
+            box-shadow: 0 12px 40px 0 rgba(0, 255, 234, 0.3);
+        }
+
+        .about-section {
+            padding: 5rem 10%;
+            background: transparent;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .about-content {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        .services-section {
+            padding: 5rem 10%;
+            background: transparent;
+        }
+
+        .services-section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #1a1a2e;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: #00ffea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 234, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #00ffea;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-section {
+            padding: 5rem 10%;
+            background: transparent;
+        }
+
+        .portfolio-section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portfolio-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            height: 350px;
+            background: #0f0f1e;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            border-color: #00ffea;
+            box-shadow: 0 10px 30px rgba(0, 255, 234, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .experience-section {
+            padding: 5rem 10%;
+            background: transparent;
+        }
+
+        .experience-section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .experience-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 190px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0, 255, 234, 0.3);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 170px 20px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            align-items: start;
+            position: relative;
+        }
+
+        .timeline-year {
+            background: #3a3a4e;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #00ffea;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-left: -26px;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 255, 234, 0.5);
+            z-index: 1;
+            justify-self: center;
+        }
+
+        .timeline-content {
+            background: rgba(42, 42, 78, 0.6);
+            padding: 2rem;
+            border-left: 3px solid #00ffea;
+            border-radius: 5px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .timeline-content h4 {
+            color: #ccc;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .contact-section {
+            padding: 5rem 10%;
+            background: transparent;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contact-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: #00ffea;
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #0f0f1e;
+            border: 2px solid #2a2a4e;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #00ffea;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 255, 234, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ccc;
+        }
+
+        .contact-icon {
+            color: #00ffea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: transparent;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 4rem;
+            }
+
+            .profile-img {
+                width: 480px;
+                height: 480px;
+            }
+
+            .hero-text h2 {
+                font-size: 3.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+
+            .timeline::before {
+                left: 202px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 165px 40px 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 10% 5%;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-text {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section h2,
+            .services-section h2,
+            .portfolio-section h2,
+            .experience-section h2,
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 0;
+            }
+
+            .timeline::before {
+                left: 112px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 85px 40px 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About me</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact" class="nav-contact-btn">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi. I'm</h1>
+                <h2>Jan Andre Nicol,</h2>
+                <p>A dedicated <span class="role">Software Engineer</span> with 2 years of hands-on experience, specializing in backend development.</p>
+                <a href="#contact" class="contact-btn">Hire me!</a>
+            </div>
+            <div class="hero-image">
+                <img src="F:\Portfolio Website\DSC_0599.JPG" alt="Profile" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-title">
+        <h2>My Skills</h2>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <img src="csharp.png" alt="C#">
+            </div>
+            <h3>C#</h3>
+            <p>Building robust desktop and web applications with .NET framework and ASP.NET</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <img src="mysql.png" alt="MySQL">
+            </div>
+            <h3>MySQL</h3>
+            <p>Database design, optimization, and complex query development for scalable solutions</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <img src="java.png" alt="Java">
+            </div>
+            <h3>Java</h3>
+            <p>Enterprise application development with Java EE, Spring, and JavaFX frameworks</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <img src="python.png" alt="Python">
+            </div>
+            <h3>Python</h3>
+            <p>Versatile scripting, automation, and full-stack development with Django and Flask</p>
+        </div>
+    </section>
+
+    <section class="resume-section">
+        <a href="#" class="resume-link">Download my resume (PDF)</a>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About</h2>
+        <div class="about-content">
+            <p>Versatile IT professional with a robust foundation spanning software development, web technologies, and system deployment. I excel in transforming complex requirements into scalable, high-performance digital solutions that drive business success.</p>
+            <p style="margin-top: 1rem;">My core expertise lies in <strong>full-stack development</strong> with proficiency across multiple programming languages including <strong>C</strong>, <strong>C++</strong>, <strong>C#</strong>, <strong>Java</strong>, <strong>JavaScript</strong>, and <strong>Python</strong>. I specialize in <strong>ADO.NET</strong>, <strong>SQL</strong> (including complex stored procedures), <strong>Java EE</strong> frameworks (<strong>JSF</strong>), and <strong>Oracle Database</strong> management. My development toolkit extends to modern web technologies like <strong>WordPress</strong>, <strong>Dreamweaver</strong>, and cloud infrastructure with <strong>Alibaba Cloud</strong> deployment expertise.</p>
+            <p style="margin-top: 1rem;">Beyond development, I bring valuable design capabilities with Adobe Creative Suite (Photoshop, Illustrator, Premiere Pro, After Effects), AutoCAD, Blender, Figma, and Adobe XD—enabling me to bridge the gap between technical implementation and user experience. My hands-on experience in software installation, system optimization, and technical documentation ensures seamless project execution from concept to deployment—consistently delivering high-quality, end-to-end results that exceed expectations.</p>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Web Design</h3>
+                <p>Creating beautiful, modern, and responsive website designs that capture your brand's essence and engage your audience.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>App Development</h3>
+                <p>Building mobile and web applications with cutting-edge technologies to solve real-world problems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Crafting intuitive user interfaces and seamless user experiences that delight your customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="F:\Portfolio Website\pisces.png" alt="Project 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="F:\Portfolio Website\drone_swarm.png" alt="Project 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="F:\Portfolio Website\bir.png" alt="Project 3">
+            </div>
+            <div class="portfolio-item">
+                <img src="F:\Portfolio Website\game.png" alt="Project 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">Feb 2025 - Present</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Backend Developer</h3>
+                    <h4>Simplevia Technologies</h4>
+                    <p>Experienced Backend Developer with a strong focus on database design and optimization. Proficient in creating and maintaining complex stored procedures, designing scalable database schemas, and performing in-depth analysis to improve datastructures and performance. Occasionally involved in developing and integrating RESTful APIs to support application functionality</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">Aug 2024 - May 2025</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Full Stack Developer</h3>
+                    <h4>Simplevia Technologies</h4>
+                    <p>Provide ongoing application support for a government-facing enterprise system, with a focus on resolving system issues and implementing enhancements. Responsibilities include developing new form modules and improving backend functionality using JavaServer Faces (JSF) and Oracle Database, all while ensuring compliance with evolving regulatory standards and enhancing the overall user experience.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">Aug 2024 - May 2025</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Software Engineer | Video Editor</h3>
+                    <h4>freeEdu.fi</h4>
+                    <p>Developed a web application and API for managing drone swarms, integrating real-time data collection using InfluxDB and data storage with PostgreSQL. <br><br>Edit and enhance lesson and marketing videos for the website's content using Adobe After Effects, Adobe Premiere, and Filmora, ensuring high-quality, engaging, and brand-aligned visuals to improve the online learning experience and attract new learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="contact-section" id="contact">
+    <h2>Contact me</h2>
+    <p class="contact-subtitle">Get In Touch</p>
+    <form class="contact-form">
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+            <textarea placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+    <div class="contact-info">
+        <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span>Your Email address</span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Location Here</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© Copyright 2025. All right reserved</p>
+</footer>
+
+  <script>
+        // Particle constellation animation
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 100;
+        const connectionDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 255, 234, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.3;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 255, 234, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
