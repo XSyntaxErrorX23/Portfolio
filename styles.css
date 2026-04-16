@@ -636,4 +636,18 @@ footer a:hover { color: var(--accent); }
     }
     .exp-chevron { grid-row: 1; grid-column: 3; }
     .hero-text h1 { font-size: 1.8rem; }
+
+    body::before { filter: blur(30px); }
+    body::after  { filter: blur(40px); }
+    body::before, body::after {
+        top: -25%;
+        left: -25%;
+        width: 150%;
+        height: 150%;
+    }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    body::before, body::after { animation: none; }
+}
+

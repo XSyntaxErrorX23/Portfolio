@@ -1,22 +1,44 @@
 const canvas = document.getElementById('particlesCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
+let width = 0;
+let height = 0;
+let dpr = 1;
+let particleCount = 0;
+let connectionDistance = 0;
 const particles = [];
-const particleCount = 100;
-const connectionDistance = 150;
+
+function computeSettings() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const area = w * h;
+    particleCount = Math.round(Math.min(100, Math.max(25, area / 14000)));
+    connectionDistance = Math.max(90, Math.min(w, h) * 0.18);
+}
+
+function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    computeSettings();
+
+    for (const p of particles) {
+        if (p.x > width) p.x = Math.random() * width;
+        if (p.y > height) p.y = Math.random() * height;
+    }
+    while (particles.length < particleCount) particles.push(new Particle());
+    if (particles.length > particleCount) particles.length = particleCount;
+}
 
 class Particle {
     constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
         this.vx = (Math.random() - 0.5) * 0.5;
         this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = Math.random() * 2 + 1;
@@ -25,8 +47,8 @@ class Particle {
     update() {
         this.x += this.vx;
         this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
     }
 
     draw() {
@@ -36,8 +58,6 @@ class Particle {
         ctx.fill();
     }
 }
-
-for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
 function connectParticles() {
     for (let i = 0; i < particles.length; i++) {
@@ -59,10 +79,17 @@ function connectParticles() {
 }
 
 function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, width, height);
     particles.forEach(p => { p.update(); p.draw(); });
     connectParticles();
     requestAnimationFrame(animate);
 }
 
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 120);
+});
+
+resize();
 animate();
