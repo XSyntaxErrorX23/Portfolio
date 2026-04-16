@@ -9,49 +9,59 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-const embers = [];
-const emberCount = 60;
+const particles = [];
+const particleCount = 100;
+const connectionDistance = 150;
 
-class Ember {
-    constructor(spawnAtBottom = false) {
-        this.reset(spawnAtBottom);
-    }
-
-    reset(spawnAtBottom) {
+class Particle {
+    constructor() {
         this.x = Math.random() * canvas.width;
-        this.y = spawnAtBottom ? canvas.height + Math.random() * 40 : Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.15;
-        this.vy = -(Math.random() * 0.35 + 0.1);
-        this.radius = Math.random() * 1.4 + 0.5;
-        this.alpha = Math.random() * 0.4 + 0.25;
-        this.fade = Math.random() * 0.0025 + 0.0008;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
     }
 
     update() {
         this.x += this.vx;
         this.y += this.vy;
-        this.vy -= 0.003;
-        this.vx += (Math.random() - 0.5) * 0.02;
-        this.alpha -= this.fade;
-        if (this.y < -10 || this.alpha <= 0) this.reset(true);
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
 
     draw() {
-        const a = Math.max(this.alpha, 0);
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(233, 201, 126, ${a})`;
-        ctx.shadowColor = 'rgba(201, 169, 97, 0.6)';
-        ctx.shadowBlur = 6;
+        ctx.fillStyle = 'rgba(0, 255, 234, 0.6)';
         ctx.fill();
     }
 }
 
-for (let i = 0; i < emberCount; i++) embers.push(new Ember());
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+function connectParticles() {
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < connectionDistance) {
+                const opacity = (1 - distance / connectionDistance) * 0.3;
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(0, 255, 234, ${opacity})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    embers.forEach(e => { e.update(); e.draw(); });
+    particles.forEach(p => { p.update(); p.draw(); });
+    connectParticles();
     requestAnimationFrame(animate);
 }
 

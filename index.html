@@ -3,367 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jan Andre Nicol — Tarnished Developer</title>
+    <title>Jan Andre Nicol — Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas class="ember-canvas" id="particlesCanvas"></canvas>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
 
-    <nav class="er-tabbar" aria-label="Portfolio sections">
-        <button class="er-tab" data-tab="status">
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-                <circle cx="8" cy="5" r="3"/>
-                <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6z"/>
-            </svg>
-            <span>Status</span>
-        </button>
-        <button class="er-tab" data-tab="equipment">
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-                <path d="M3 13l7-7M2 14l1-1"/>
-                <path d="M10 6l3-3 1 1-3 3"/>
-                <path d="M13 13l-6-6M14 14l-1-1"/>
-            </svg>
-            <span>Equipment</span>
-        </button>
-        <button class="er-tab" data-tab="lineage">
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-                <path d="M3 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <path d="M5 6h6M5 9h6M5 12h4"/>
-            </svg>
-            <span>Lineage</span>
-        </button>
-        <button class="er-tab" data-tab="grace">
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-                <path d="M8 1.5c-.8 2.2 1.6 3.2.2 5.6-.8-.6-1.5-.8-1.8-2.2-1.7 1.8-1.8 5 1.6 6.6 3.7-.6 4.8-4 2.8-7.2-.8.9-1.8.4-2.8-2.8z"/>
-            </svg>
-            <span>Site of Grace</span>
-        </button>
-    </nav>
+    <main>
 
-    <main class="er-main">
+        <!-- ═══════════════ HERO ═══════════════ -->
+        <section class="hero">
+            <div class="glass-card hero-card">
+                <img class="hero-photo" src="DSC_0599.JPG" alt="Jan Andre Nicol">
 
-        <!-- ═══════════════════ STATUS ═══════════════════ -->
-        <section id="tab-status" class="er-panel">
-            <header class="er-screen-header">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6z"/></svg>
-                    Status
-                </div>
-                <h1 class="er-character-name">Jan Andre Nicol</h1>
-                <p class="er-character-title">Software Engineer · Backend Specialist · 2 Years Ascended</p>
-            </header>
-
-            <div class="er-status-grid">
-                <!-- Column 1: Attribute Points -->
-                <div class="er-col">
-                    <h2 class="er-col-heading">Attribute Points</h2>
-                    <ul class="er-stat-list">
-                        <li class="er-stat"><span class="name">C#</span><span class="leader"></span><span class="value">8</span></li>
-                        <li class="er-stat"><span class="name">Java</span><span class="leader"></span><span class="value">7</span></li>
-                        <li class="er-stat"><span class="name">Python</span><span class="leader"></span><span class="value">8</span></li>
-                        <li class="er-stat"><span class="name">MySQL</span><span class="leader"></span><span class="value">9</span></li>
-                        <li class="er-stat"><span class="name">JavaScript</span><span class="leader"></span><span class="value">7</span></li>
-                        <li class="er-stat"><span class="name">Oracle SQL</span><span class="leader"></span><span class="value">9</span></li>
-                        <li class="er-stat"><span class="name">JSF</span><span class="leader"></span><span class="value">7</span></li>
-                        <li class="er-stat"><span class="name">.NET</span><span class="leader"></span><span class="value">7</span></li>
-                    </ul>
+                <div class="hero-text">
+                    <p class="hero-greeting">Hi, I'm</p>
+                    <h1>Jan Andre Nicol</h1>
+                    <p class="hero-title"><span class="role">Software Engineer</span> · Backend Specialist</p>
+                    <p class="hero-tagline">Two years of hands-on experience building scalable backends, designing databases, and shipping full-stack applications.</p>
                 </div>
 
-                <!-- Column 2: Base Stats + Tools -->
-                <div class="er-col">
-                    <h2 class="er-col-heading">Base Stats</h2>
-                    <ul class="er-stat-list">
-                        <li class="er-stat"><span class="name">Years XP</span><span class="leader"></span><span class="value">2</span></li>
-                        <li class="er-stat"><span class="name">Projects Shipped</span><span class="leader"></span><span class="value">6</span></li>
-                        <li class="er-stat"><span class="name">Factions Served</span><span class="leader"></span><span class="value">2</span></li>
-                        <li class="er-stat"><span class="name">Equip Load</span><span class="leader"></span><span class="value dual">63.7 / <span class="max">93.7</span></span></li>
-                        <li class="er-stat"><span class="name">Poise</span><span class="leader"></span><span class="value">66</span></li>
-                        <li class="er-stat"><span class="name">Memory Slots</span><span class="leader"></span><span class="value">10</span></li>
-                    </ul>
-
-                    <h3 class="er-sub-heading">Equipped Tools</h3>
-                    <div class="er-tool-grid">
-                        <div class="er-slot er-slot-sm" title="C#">
-                            <img src="csharp.png" alt="C#">
-                        </div>
-                        <div class="er-slot er-slot-sm" title="MySQL">
-                            <img src="mysql.png" alt="MySQL">
-                        </div>
-                        <div class="er-slot er-slot-sm" title="Java">
-                            <img src="java.png" alt="Java">
-                        </div>
-                        <div class="er-slot er-slot-sm" title="Python">
-                            <img src="python.png" alt="Python">
-                        </div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
-                        <div class="er-slot er-slot-sm er-slot-empty"></div>
+                <div class="stat-grid">
+                    <div class="stat-cell">
+                        <span class="num">2</span>
+                        <span class="label">Years XP</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">6</span>
+                        <span class="label">Projects</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">2</span>
+                        <span class="label">Companies</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">8+</span>
+                        <span class="label">Stacks</span>
                     </div>
                 </div>
 
-                <!-- Column 3: Attack Power + Resistance -->
-                <div class="er-col">
-                    <h2 class="er-col-heading">Attack Power</h2>
-                    <ul class="er-stat-list">
-                        <li class="er-stat"><span class="name">Backend</span><span class="leader"></span><span class="value">670</span></li>
-                        <li class="er-stat"><span class="name">Database Design</span><span class="leader"></span><span class="value">640</span></li>
-                        <li class="er-stat"><span class="name">API Development</span><span class="leader"></span><span class="value">580</span></li>
-                        <li class="er-stat"><span class="name">Full-Stack</span><span class="leader"></span><span class="value">520</span></li>
-                        <li class="er-stat"><span class="name">Frontend</span><span class="leader"></span><span class="value">430</span></li>
-                        <li class="er-stat"><span class="name">DevOps</span><span class="leader"></span><span class="value">380</span></li>
-                    </ul>
-
-                    <h2 class="er-col-heading">Resistance</h2>
-                    <ul class="er-stat-list">
-                        <li class="er-stat"><span class="name">Bug Tolerance</span><span class="leader"></span><span class="value">322</span></li>
-                        <li class="er-stat"><span class="name">Code Review</span><span class="leader"></span><span class="value">281</span></li>
-                        <li class="er-stat"><span class="name">Legacy Systems</span><span class="leader"></span><span class="value">270</span></li>
-                        <li class="er-stat"><span class="name">Crunch Time</span><span class="leader"></span><span class="value">260</span></li>
-                    </ul>
+                <div class="action-row">
+                    <a class="action-btn primary" href="JanAndreNicol_ATS_Resume.pdf" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 2v9M4 7l4 4 4-4M3 14h10"/></svg>
+                        Resume
+                    </a>
+                    <a class="action-btn" href="mailto:jandrenicol023@gmail.com">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3.5" width="12" height="9" rx="1"/><path d="M2 4.5l6 4 6-4"/></svg>
+                        Email
+                    </a>
+                    <a class="action-btn" href="https://github.com/XSyntaxErrorX23" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2 0 0 .7-.2 2.1.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.4-1 2.1-.8 2.1-.8.5 1 .2 1.8.1 2 .5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.2.5.7.5 1.4v2.1c0 .2.1.5.5.4C13.7 14.5 16 11.5 16 8c0-4.4-3.6-8-8-8z"/></svg>
+                        GitHub
+                    </a>
+                    <a class="action-btn" href="https://linkedin.com/in/jan-andre-nicol-6699bb31b" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.6 0H2.4A2.4 2.4 0 0 0 0 2.4v11.2A2.4 2.4 0 0 0 2.4 16h11.2a2.4 2.4 0 0 0 2.4-2.4V2.4A2.4 2.4 0 0 0 13.6 0zM4.8 13.6H2.4V6h2.4zM3.6 5a1.4 1.4 0 1 1 0-2.8 1.4 1.4 0 0 1 0 2.8zm10 8.6h-2.4V9.8c0-.9-.3-1.5-1.1-1.5-.7 0-1.1.5-1.2 1-.1.2-.1.4-.1.6v3.7H6.4V6h2.4v1c.3-.5 1-1.2 2.3-1.2 1.7 0 2.9 1.1 2.9 3.4z"/></svg>
+                        LinkedIn
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════ EQUIPMENT ═══════════════════ -->
-        <section id="tab-equipment" class="er-panel">
-            <header class="er-screen-header">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l7-7M2 14l1-1M10 6l3-3 1 1-3 3"/></svg>
-                    Equipment
-                </div>
-                <h1 class="er-character-name">Jan Andre Nicol</h1>
-                <p class="er-character-title">Wandering Developer of the Lands Between Terminals</p>
-            </header>
-
-            <div class="er-equip-grid">
-                <!-- Left: Lineage + project inventory -->
-                <div class="er-col">
-                    <h2 class="er-col-heading">Lineage</h2>
-                    <ul class="er-stat-list">
-                        <li class="er-stat"><span class="name">Body Type</span><span class="leader"></span><span class="value">Full-Stack</span></li>
-                        <li class="er-stat"><span class="name">Age</span><span class="leader"></span><span class="value">2 Years Coded</span></li>
-                        <li class="er-stat"><span class="name">Origin</span><span class="leader"></span><span class="value">Philippines</span></li>
-                        <li class="er-stat"><span class="name">Keepsake</span><span class="leader"></span><span class="value">First Commit</span></li>
-                    </ul>
-
-                    <h2 class="er-col-heading">Equipment</h2>
-                    <div class="er-equip-slots">
-                        <button class="er-slot er-equip-slot" data-name="PISCES PEZA API"
-                                data-tags="C# · .NET 9.0 · ASP.NET Core · MySQL · JWT · AWS S3 · Quartz.NET"
-                                data-desc="REST API backend for PEZA's environmental compliance system. Digitizes multi-portal workflows for guest browsing, locator submissions, and officer review/approval across environmental certifications, hazardous waste tracking, water permits, and occupational health. MySQL stored procedures, no ORM.">
-                            <img src="pisces.png" alt="Pisces">
-                        </button>
-                        <button class="er-slot er-equip-slot" data-name="Drone Swarm Management System"
-                                data-tags="Python · FastAPI · React · PostgreSQL · InfluxDB · Redis · LangChain · Docker"
-                                data-desc="Full-stack platform for managing drone swarms in real time. Live telemetry on Leaflet maps, AI chat via LangChain/OpenAI, geofence enforcement, coordinated mission planning, and a SITL simulator — all in a 4-service Docker-orchestrated microservices architecture.">
-                            <img src="drone_swarm.png" alt="Drone Swarm">
-                        </button>
-                        <button class="er-slot er-equip-slot" data-name="BIR eFPS"
-                                data-tags="Java · Java EE · JSF · Oracle DB · Eclipse"
-                                data-desc="Electronic Filing and Payment System for the Bureau of Internal Revenue — the Philippines' national tax filing platform. Built new form modules, resolved production issues, and improved backend functionality on this government-facing enterprise system.">
-                            <img src="bir.png" alt="BIR">
-                        </button>
-                        <button class="er-slot er-equip-slot" data-name="Nicol's Place"
-                                data-tags="C# · .NET 9 · React · TypeScript · SQLite · EF Core · TailwindCSS · Docker"
-                                data-desc="Full-stack booking management system for a private pool rental business. Real-time availability calendar, admin dashboard with revenue charts, payment proof verification, PDF receipt/invoice generation, and recurring schedule blocking.">
-                            <img src="nicols_place.png" alt="Nicol's Place">
-                        </button>
-                        <button class="er-slot er-equip-slot" data-name="SavingsJar"
-                                data-tags="TypeScript · React Native · Expo · Zustand · Reanimated · MMKV"
-                                data-desc="Mobile savings goal tracker with visual progress, milestone celebrations, deposit streaks, multi-currency support, and a freemium model. All data on-device — no backend.">
-                            <img src="SavingsJar.png" alt="SavingsJar">
-                        </button>
-                        <button class="er-slot er-equip-slot" data-name="Game"
-                                data-tags="Game Project"
-                                data-desc="Short project description goes here.">
-                            <img src="game.png" alt="Game">
-                        </button>
-                        <div class="er-slot er-slot-empty"></div>
-                        <div class="er-slot er-slot-empty"></div>
-                        <div class="er-slot er-slot-empty"></div>
-                        <div class="er-slot er-slot-empty"></div>
-                    </div>
-                </div>
-
-                <!-- Middle: Character render -->
-                <aside class="er-character-render">
-                    <div class="er-pedestal">
-                        <img src="DSC_0599.JPG" alt="Jan Andre Nicol">
-                    </div>
-                    <div class="er-pedestal-shadow"></div>
-                </aside>
-
-                <!-- Right: Item detail -->
-                <aside id="equipDetail" class="er-equip-detail" aria-live="polite">
-                    <p class="er-detail-empty">Hover an item to view details.</p>
-                </aside>
+        <!-- ═══════════════ ABOUT ═══════════════ -->
+        <section class="about">
+            <h2 class="section-heading">About</h2>
+            <div class="glass-card about-card">
+                <p>Versatile IT professional with a strong foundation in software development, web technologies, and system deployment. Skilled in C, C++, C#, Java, JavaScript, and Python, with specialization in ADO.NET, SQL, Java EE frameworks (JSF), and Oracle Database management. Experienced with Alibaba Cloud deployment and modern web technologies. Beyond development, I bring design capabilities with Adobe Creative Suite, Figma, and Adobe XD — enabling me to bridge technical implementation and user experience.</p>
             </div>
         </section>
 
-        <!-- ═══════════════════ LINEAGE ═══════════════════ -->
-        <section id="tab-lineage" class="er-panel">
-            <header class="er-screen-header">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
-                    Lineage
+        <!-- ═══════════════ SKILLS ═══════════════ -->
+        <section class="skills">
+            <h2 class="section-heading">Skills</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-group">
+                    <h3>Languages</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">C++</span>
+                    </div>
                 </div>
-                <h1 class="er-character-name">Chronicle of Passage</h1>
-                <p class="er-character-title">The paths walked, the factions served</p>
-            </header>
+                <div class="glass-card skill-group">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Java EE / JSF</span>
+                        <span class="tech-tag">ADO.NET</span>
+                        <span class="tech-tag">Entity Framework</span>
+                        <span class="tech-tag">LangChain</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-group">
+                    <h3>Databases & Infrastructure</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Oracle DB</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">InfluxDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">Alibaba Cloud</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-group">
+                    <h3>Tools & Design</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Swagger</span>
+                        <span class="tech-tag">Eclipse</span>
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">Adobe XD</span>
+                        <span class="tech-tag">Photoshop</span>
+                        <span class="tech-tag">Premiere Pro</span>
+                        <span class="tech-tag">After Effects</span>
+                        <span class="tech-tag">Unity</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="er-lineage-list">
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">Feb 2025 — Present</div>
+        <!-- ═══════════════ PROJECTS ═══════════════ -->
+        <section class="projects">
+            <h2 class="section-heading">Projects</h2>
+            <div class="projects-grid">
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb" src="pisces.png" alt="PISCES PEZA API">
+                    <div class="project-body">
+                        <h3>PISCES PEZA API</h3>
+                        <p>REST API backend for the Philippine Economic Zone Authority's environmental compliance system. Digitizes multi-portal workflows — guest browsing, locator company submissions, and PEZA officer review/approval — across modules for environmental certifications, hazardous waste tracking, water permits, and occupational health. Features JWT auth with refresh tokens, per-IP rate limiting, Quartz.NET scheduled jobs, pluggable cloud storage (AWS S3 + Alibaba OSS), and Word/Excel report generation. All data access runs through MySQL stored procedures with no ORM.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">.NET 9.0</span>
+                            <span class="tech-tag">ASP.NET Core</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">AWS S3</span>
+                            <span class="tech-tag">Quartz.NET</span>
+                            <span class="tech-tag">Swagger</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb" src="drone_swarm.png" alt="Drone Swarm Management System">
+                    <div class="project-body">
+                        <h3>Drone Swarm Management System</h3>
+                        <p>Full-stack web platform for managing and monitoring drone swarms in real time. Features interactive Leaflet maps with live telemetry, AI-powered chat assistance via LangChain/OpenAI over WebSocket, geofence enforcement with violation tracking, coordinated mission planning with formation templates, and a built-in SITL simulator for testing without physical hardware. Microservices architecture with 4 Docker-orchestrated services.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">InfluxDB</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb" src="bir.png" alt="BIR eFPS">
+                    <div class="project-body">
+                        <h3>BIR eFPS</h3>
+                        <p>Electronic Filing and Payment System for the Bureau of Internal Revenue — the Philippines' national tax filing platform. Provided ongoing application support and feature development on this government-facing enterprise system, building new form modules, resolving production issues, and improving backend functionality while ensuring compliance with evolving regulatory standards.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Java EE</span>
+                            <span class="tech-tag">JSF</span>
+                            <span class="tech-tag">Oracle DB</span>
+                            <span class="tech-tag">Eclipse</span>
+                        </div>
+                        <a class="project-link" href="https://efps.bir.gov.ph/" target="_blank" rel="noopener">Visit site →</a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb" src="nicols_place.png" alt="Nicol's Place">
+                    <div class="project-body">
+                        <h3>Nicol's Place</h3>
+                        <p>Full-stack booking management system for a private pool rental business. Public-facing site with real-time availability calendar, session-based pricing, and booking tracker. Admin dashboard with KPI cards, revenue charts, payment proof verification, PDF receipt/invoice generation, gallery management, and recurring schedule blocking.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">.NET 9</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">EF Core</span>
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <a class="project-link" href="https://github.com/XSyntaxErrorX23/nicols-place-app" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb project-thumb--contain" src="SavingsJar.png" alt="SavingsJar">
+                    <div class="project-body">
+                        <h3>SavingsJar</h3>
+                        <p>React Native mobile app for tracking savings goals with visual progress, milestone celebrations, and deposit streaks. Features quick-add buttons with haptic feedback, a stats dashboard with daily charts and period filtering, multi-currency support, light/dark theming, and a freemium model. All data stored on-device — no backend required.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">Zustand</span>
+                            <span class="tech-tag">Reanimated</span>
+                            <span class="tech-tag">MMKV</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card">
+                    <img class="project-thumb" src="game.png" alt="Game">
+                    <div class="project-body">
+                        <h3>Souls-like Action RPG</h3>
+                        <p>3D third-person action RPG built in Unity, practicing Souls-like combat mechanics: locomotion with locomotion blend trees, target-locking, stamina-driven attacks and dodging, light/heavy combos, parry/riposte, and basic enemy AI with state machines. Developed while following Sebastian Graves' Unity action RPG tutorial series on YouTube as a deep-dive into character controller design, animation event wiring, and combat feel.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Animation</span>
+                            <span class="tech-tag">State Machines</span>
+                            <span class="tech-tag">Combat System</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+        <section class="experience">
+            <h2 class="section-heading">Experience</h2>
+            <div class="exp-list">
+
+                <div class="glass-card exp-card">
+                    <span class="exp-date">Feb 2025 — Present</span>
                     <h3>Backend Developer</h3>
-                    <p class="er-faction">Simplevia Technologies</p>
+                    <p class="exp-company">Simplevia Technologies</p>
                     <p>Experienced Backend Developer with a strong focus on database design and optimization. Proficient in creating and maintaining complex stored procedures, designing scalable database schemas, and performing in-depth analysis to improve data structures and performance. Occasionally involved in developing and integrating RESTful APIs to support application functionality.</p>
-                </article>
+                    <div class="exp-stack">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">ADO.NET</span>
+                        <span class="tech-tag">REST API</span>
+                        <img src="csharp.png" alt="C#" title="C#">
+                        <img src="mysql.png" alt="MySQL" title="MySQL">
+                    </div>
+                </div>
 
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">Aug 2024 — May 2025</div>
+                <div class="glass-card exp-card">
+                    <span class="exp-date">Aug 2024 — May 2025</span>
                     <h3>Full Stack Developer</h3>
-                    <p class="er-faction">Simplevia Technologies</p>
-                    <p>Provide ongoing application support for a government-facing enterprise system, with a focus on resolving system issues and implementing enhancements. Responsibilities include developing new form modules and improving backend functionality using JavaServer Faces (JSF) and Oracle Database, ensuring compliance with evolving regulatory standards and enhancing the user experience.</p>
-                </article>
+                    <p class="exp-company">Simplevia Technologies</p>
+                    <p>Provide ongoing application support for a government-facing enterprise system, with a focus on resolving system issues and implementing enhancements. Responsibilities include developing new form modules and improving backend functionality using JavaServer Faces (JSF) and Oracle Database, all while ensuring compliance with evolving regulatory standards and enhancing the overall user experience.</p>
+                    <div class="exp-stack">
+                        <span class="tech-tag">Java EE</span>
+                        <span class="tech-tag">JSF</span>
+                        <span class="tech-tag">Oracle DB</span>
+                        <img src="java.png" alt="Java" title="Java / JSF">
+                    </div>
+                </div>
 
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">Aug 2023 — Aug 2024</div>
-                    <h3>Software Engineer · Video Editor</h3>
-                    <p class="er-faction">freeEdu.fi</p>
-                    <p>Developed a web application and API for managing drone swarms, integrating real-time data collection using InfluxDB and data storage with PostgreSQL. Also edited and enhanced lesson and marketing videos using Adobe After Effects, Premiere, and Filmora to improve the online learning experience.</p>
-                </article>
+                <div class="glass-card exp-card">
+                    <span class="exp-date">Aug 2023 — Aug 2024</span>
+                    <h3>Full-Stack Developer | Video Editor</h3>
+                    <p class="exp-company">freeEdu.fi</p>
+                    <p>Developed a web application and API for managing drone swarms, integrating real-time data collection using InfluxDB and data storage with PostgreSQL.</p>
+                    <p>Edit and enhance lesson and marketing videos for the website's content using Adobe After Effects, Adobe Premiere, and Filmora, ensuring high-quality, engaging, and brand-aligned visuals to improve the online learning experience and attract new learners.</p>
+                    <div class="exp-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">InfluxDB</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <img src="python.png" alt="Python" title="Python">
+                    </div>
+                </div>
 
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">Earlier</div>
+                <div class="glass-card exp-card">
+                    <span class="exp-date">Self-employed</span>
                     <h3>Computer Technician</h3>
-                    <p class="er-faction">CADDTECH Computers · PC Doctor — Self-employed</p>
-                    <p>Diagnosed, repaired, and maintained computer hardware and software systems. Troubleshot technical issues, installed operating systems, and supported end users with reliable fixes.</p>
-                </article>
-            </div>
-
-            <header class="er-screen-header" style="margin-top: 3rem;">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
-                    Scholarship
+                    <p class="exp-company">CADDTECH COMPUTERS | PC Doctor</p>
+                    <p>Diagnosed, repaired, and maintained computer hardware and software systems. Troubleshot technical issues and installed operating systems for clients.</p>
+                    <div class="exp-stack">
+                        <span class="tech-tag">Hardware Repair</span>
+                        <span class="tech-tag">Troubleshooting</span>
+                        <span class="tech-tag">OS Installation</span>
+                    </div>
                 </div>
-                <h1 class="er-character-name">Education</h1>
-                <p class="er-character-title">Halls of learning traversed</p>
-            </header>
 
-            <div class="er-lineage-list">
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">2019 — 2023</div>
+            </div>
+        </section>
+
+        <!-- ═══════════════ EDUCATION ═══════════════ -->
+        <section class="education">
+            <h2 class="section-heading">Education</h2>
+            <div class="exp-list">
+                <div class="glass-card exp-card">
+                    <span class="exp-date">2019 — 2023</span>
                     <h3>Bachelor of Science in Computer Engineering</h3>
-                    <p class="er-faction">Polytechnic University of the Philippines</p>
-                </article>
-                <article class="er-lineage-card">
-                    <div class="er-rune-banner">2014 — 2019</div>
+                    <p class="exp-company">Polytechnic University of the Philippines</p>
+                </div>
+                <div class="glass-card exp-card">
+                    <span class="exp-date">2014 — 2019</span>
                     <h3>Secondary Education</h3>
-                    <p class="er-faction">Pulong Buhangin National High School</p>
+                    <p class="exp-company">Pulong Buhangin National High School</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+        <section class="certifications">
+            <h2 class="section-heading">Certifications</h2>
+            <div class="cert-grid">
+                <article class="glass-card cert-card">
+                    <img class="cert-img" src="Certificate/1750207559340.jpg" alt="Unity Game Development Certificate">
+                    <div class="cert-body">
+                        <h3>The Ultimate Guide to Game Development with Unity (Official)</h3>
+                        <p class="cert-issuer">Udemy · June 2025 · 36.5 hours</p>
+                    </div>
+                </article>
+                <article class="glass-card cert-card">
+                    <img class="cert-img" src="Certificate/1746764487527.jpg" alt="RPA Developer Level 1 Certificate">
+                    <div class="cert-body">
+                        <h3>RPA Developer Level 1</h3>
+                        <p class="cert-issuer">Laiye · September 2023</p>
+                    </div>
+                </article>
+                <article class="glass-card cert-card">
+                    <img class="cert-img" src="Certificate/1746764925701.jpg" alt="IT Specialist in Networking Certificate">
+                    <div class="cert-body">
+                        <h3>Information Technology Specialist — Networking</h3>
+                        <p class="cert-issuer">Certiport / Pearson VUE · February 2023</p>
+                    </div>
                 </article>
             </div>
-
-            <header class="er-screen-header" style="margin-top: 3rem;">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor"><path d="M8 1.5c-.8 2.2 1.6 3.2.2 5.6-.8-.6-1.5-.8-1.8-2.2-1.7 1.8-1.8 5 1.6 6.6 3.7-.6 4.8-4 2.8-7.2-.8.9-1.8.4-2.8-2.8z"/></svg>
-                    Talismans
-                </div>
-                <h1 class="er-character-name">Certifications</h1>
-                <p class="er-character-title">Seals of mastery earned upon the road</p>
-            </header>
-
-            <div class="er-cert-grid">
-                <a class="er-cert-card" href="Certificate/1750207559340.jpg" target="_blank" rel="noopener">
-                    <img src="Certificate/1750207559340.jpg" alt="Unity Game Development Certificate">
-                    <div class="er-cert-body">
-                        <h3>Ultimate Guide to Game Development with Unity</h3>
-                        <p class="er-cert-issuer">Udemy · June 2025</p>
-                    </div>
-                </a>
-                <a class="er-cert-card" href="Certificate/1746764487527.jpg" target="_blank" rel="noopener">
-                    <img src="Certificate/1746764487527.jpg" alt="RPA Developer Level 1 Certificate">
-                    <div class="er-cert-body">
-                        <h3>RPA Developer Level 1</h3>
-                        <p class="er-cert-issuer">Laiye · September 2023</p>
-                    </div>
-                </a>
-                <a class="er-cert-card" href="Certificate/1746764925701.jpg" target="_blank" rel="noopener">
-                    <img src="Certificate/1746764925701.jpg" alt="IT Specialist Networking Certificate">
-                    <div class="er-cert-body">
-                        <h3>IT Specialist — Networking</h3>
-                        <p class="er-cert-issuer">Certiport · February 2023</p>
-                    </div>
-                </a>
-            </div>
         </section>
 
-        <!-- ═══════════════════ SITE OF GRACE ═══════════════════ -->
-        <section id="tab-grace" class="er-panel">
-            <header class="er-screen-header">
-                <div class="er-section-tag">
-                    <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor"><path d="M8 1.5c-.8 2.2 1.6 3.2.2 5.6-.8-.6-1.5-.8-1.8-2.2-1.7 1.8-1.8 5 1.6 6.6 3.7-.6 4.8-4 2.8-7.2-.8.9-1.8.4-2.8-2.8z"/></svg>
-                    Site of Grace
-                </div>
-                <h1 class="er-character-name">Commune at Grace</h1>
-                <p class="er-character-title">Send a message, summon the developer</p>
-            </header>
-
-            <div class="er-grace-grid">
-                <form class="er-grace-form">
-                    <h2>Send a Message</h2>
-                    <div class="er-form-group">
-                        <label for="name">Wanderer's Name</label>
-                        <input type="text" id="name" placeholder="Your name" required>
-                    </div>
-                    <div class="er-form-group">
-                        <label for="email">Whispered Address</label>
-                        <input type="email" id="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="er-form-group">
-                        <label for="message">Inscription</label>
-                        <textarea id="message" placeholder="Leave your message upon the stone..." required></textarea>
-                    </div>
-                    <button type="submit" class="er-btn">Commune</button>
-                </form>
-
-                <div class="er-messengers">
-                    <h2>Messengers</h2>
-                    <ul>
-                        <li>
-                            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 5l6 4 6-4"/></svg>
-                            <a href="mailto:jandrenicol023@gmail.com">jandrenicol023@gmail.com</a>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 14s-5-4.5-5-8a5 5 0 0 1 10 0c0 3.5-5 8-5 8z"/><circle cx="8" cy="6" r="1.8"/></svg>
-                            <span>Santa Maria, Bulacan, Philippines</span>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2 0 0 .7-.2 2.1.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3C11.9 3.3 12.6 3.5 12.6 3.5c.5 1 .2 1.8.1 2 .5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.2.5.7.5 1.4v2.1c0 .2.1.5.5.4C13.7 14.5 16 11.5 16 8c0-4.4-3.6-8-8-8z"/></svg>
-                            <a href="https://github.com/XSyntaxErrorX23" target="_blank" rel="noopener">github.com/XSyntaxErrorX23</a>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.6 0H2.4A2.4 2.4 0 0 0 0 2.4v11.2A2.4 2.4 0 0 0 2.4 16h11.2a2.4 2.4 0 0 0 2.4-2.4V2.4A2.4 2.4 0 0 0 13.6 0zM4.8 13.6H2.4V6h2.4zM3.6 5a1.4 1.4 0 1 1 0-2.8 1.4 1.4 0 0 1 0 2.8zm10 8.6h-2.4V9.8c0-.9-.3-1.5-1.1-1.5-.7 0-1.1.5-1.2 1-.1.2-.1.4-.1.6v3.7H6.4V6h2.4v1c.3-.5 1-1.2 2.3-1.2 1.7 0 2.9 1.1 2.9 3.4z"/></svg>
-                            <a href="https://linkedin.com/in/jan-andre-nicol-6699bb31b" target="_blank" rel="noopener">linkedin.com/in/jan-andre-nicol-6699bb31b</a>
-                        </li>
-                    </ul>
-                    <a href="JanAndreNicol_ATS_Resume.pdf" class="er-btn" target="_blank" rel="noopener">Retrieve Resume</a>
-                </div>
+        <footer>
+            <span>© 2025 Jan Andre Nicol · Santa Maria, Bulacan</span>
+            <div class="links">
+                <a href="mailto:jandrenicol023@gmail.com">Email</a>
+                <a href="https://github.com/XSyntaxErrorX23" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/jan-andre-nicol-6699bb31b" target="_blank" rel="noopener">LinkedIn</a>
             </div>
-        </section>
+        </footer>
 
     </main>
 
-    <footer class="er-hint-bar">
-        <span><span class="er-key">Tab</span> Switch</span>
-        <span><span class="er-key">Esc</span> Return to Status</span>
-        <span>© 2025 Jan Andre Nicol</span>
-    </footer>
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <img class="lightbox-img" alt="">
+    </div>
 
     <script src="particles.js" defer></script>
     <script src="main.js" defer></script>

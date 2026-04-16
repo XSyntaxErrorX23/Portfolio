@@ -1,46 +1,33 @@
-const TABS = ['status', 'equipment', 'lineage', 'grace'];
+(function () {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    const lbImg = lightbox.querySelector('.lightbox-img');
+    const lbClose = lightbox.querySelector('.lightbox-close');
 
-function showTab(name) {
-    if (!TABS.includes(name)) name = 'status';
-    document.querySelectorAll('.er-panel').forEach(p => {
-        p.classList.toggle('active', p.id === `tab-${name}`);
-    });
-    document.querySelectorAll('.er-tab').forEach(t => {
-        t.classList.toggle('active', t.dataset.tab === name);
-    });
-    if (location.hash.slice(1) !== name) {
-        history.replaceState(null, '', `#${name}`);
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-}
+    const open = (src, alt) => {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
 
-function renderDetail(slot) {
-    const detail = document.getElementById('equipDetail');
-    if (!detail || !slot || !slot.dataset.name) return;
-    const tags = slot.dataset.tags;
-    detail.innerHTML = `
-        <h3>${slot.dataset.name}</h3>
-        ${tags ? `<p class="er-tags">${tags}</p>` : ''}
-        <p>${slot.dataset.desc || 'No description yet.'}</p>
-    `;
-}
+    const close = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+    };
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.er-tab').forEach(t => {
-        t.addEventListener('click', () => showTab(t.dataset.tab));
+    document.querySelectorAll('.project-thumb, .cert-img').forEach(img => {
+        img.addEventListener('click', () => open(img.src, img.alt));
     });
 
-    window.addEventListener('hashchange', () => showTab(location.hash.slice(1)));
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox || e.target === lbClose) close();
+    });
 
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') showTab('status');
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) close();
     });
-
-    document.querySelectorAll('.er-equip-slot[data-name]').forEach(slot => {
-        slot.addEventListener('mouseenter', () => renderDetail(slot));
-        slot.addEventListener('focus', () => renderDetail(slot));
-        slot.addEventListener('click', e => { e.preventDefault(); renderDetail(slot); });
-    });
-
-    showTab(location.hash.slice(1) || 'status');
-});
+})();
