@@ -12,7 +12,7 @@
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-        camera.position.set(0, 4.2, 4.8);
+        camera.position.set(0, 4.8, 6.8);
         camera.lookAt(0, 0, 0);
 
         scene.add(new THREE.AmbientLight(0x334455, 0.75));
@@ -160,6 +160,7 @@
         board.add(txLed);
 
         board.rotation.x = -0.25;
+        board.scale.setScalar(0.88);
         scene.add(board);
 
         function resize() {
