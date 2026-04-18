@@ -169,11 +169,20 @@ main {
 .arduino-scene {
     position: relative;
     width: 100%;
-    height: 420px;
+    height: 460px;
     margin: 4rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.arduino-scene::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 70% at 50% 55%, rgba(4, 12, 24, 0.85) 0%, rgba(4, 12, 24, 0.35) 45%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .arduino-canvas {
@@ -181,6 +190,14 @@ main {
     height: 100%;
     max-width: 900px;
     display: block;
+    position: relative;
+    z-index: 1;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.arduino-canvas:active {
+    cursor: grabbing;
 }
 
 .hero-tagline {
@@ -718,7 +735,7 @@ footer a:hover { color: var(--accent); }
     }
 
     .arduino-scene {
-        height: 300px;
+        height: 320px;
         margin: 2.5rem 0;
     }
 }
@@ -740,7 +757,7 @@ footer a:hover { color: var(--accent); }
     .exp-chevron { grid-row: 1; grid-column: 3; }
     .hero-text h1 { font-size: 1.8rem; }
 
-    .arduino-scene { height: 240px; }
+    .arduino-scene { height: 260px; }
 
     body::before { filter: blur(30px); }
     body::after  { filter: blur(40px); }
