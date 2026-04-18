@@ -22,7 +22,7 @@
                 <div class="hero-text">
                     <p class="hero-greeting">Hi, I'm</p>
                     <h1>Jan Andre Nicol</h1>
-                    <p class="hero-title"><span class="role">Software Engineer</span> · Backend Specialist</p>
+                    <p class="hero-title"><span class="role typewriter" id="roleTypewriter" aria-live="polite">Software Engineer</span></p>
                     <p class="hero-tagline">Two years of hands-on experience building scalable backends, designing databases, and shipping full-stack applications.</p>
                 </div>
 
@@ -64,6 +64,11 @@
                     </a>
                 </div>
             </div>
+        </section>
+
+        <!-- ═══════════════ 3D ARDUINO ═══════════════ -->
+        <section class="arduino-scene" aria-label="Hovering 3D Arduino board">
+            <canvas class="arduino-canvas" id="arduinoCanvas" role="img" aria-label="Animated 3D Arduino board rotating slowly"></canvas>
         </section>
 
         <!-- ═══════════════ ABOUT ═══════════════ -->
@@ -397,5 +402,7 @@
 
     <script src="particles.js" defer></script>
     <script src="main.js" defer></script>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
+    <script src="arduino3d.js" defer></script>
 </body>
 </html>
