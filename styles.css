@@ -598,6 +598,63 @@ footer a:hover { color: var(--accent); }
     color: var(--accent);
 }
 
+/* ───────────────────────── Research ───────────────────────── */
+
+.research {
+    margin-top: 3rem;
+}
+
+.research-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem;
+}
+
+.research-image {
+    max-height: 520px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.75rem;
+    box-shadow: 0 0 24px var(--accent-glow);
+    border: 1px solid var(--card-border);
+}
+
+.research-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.research-badge {
+    align-self: flex-start;
+    background: var(--accent);
+    color: var(--bg-deep);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+}
+
+.research-body h3 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+}
+
+.research-meta {
+    color: var(--text-mute);
+    font-size: 0.9rem;
+}
+
+.research-body p {
+    color: var(--text-dim);
+}
+
 /* ───────────────────────── Responsive ───────────────────────── */
 
 @media (max-width: 900px) {
@@ -618,6 +675,15 @@ footer a:hover { color: var(--accent); }
     .hero-tagline { margin: 0 auto; }
     .hero-text h1 { font-size: 2.1rem; }
     .action-row { justify-content: center; }
+
+    .research-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .research-image {
+        max-height: 360px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 700px) {
