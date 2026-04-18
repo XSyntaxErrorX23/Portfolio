@@ -356,17 +356,19 @@
             board.add(hole);
         });
 
-        // LEDs with glow sprites
-        function addLed(x, z, color, rgb, size, glowScale) {
+        // LEDs with glow sprites (tracked by name for external pulse API)
+        const leds = {};
+        function addLed(name, x, z, color, rgb, size, glowScale) {
+            const restEmissive = 2.2;
             const ledMat = new THREE.MeshStandardMaterial({
                 color: color,
                 emissive: color,
-                emissiveIntensity: 2.2,
+                emissiveIntensity: restEmissive,
                 roughness: 0.2
             });
-            const led = new THREE.Mesh(new THREE.SphereGeometry(size, 12, 12), ledMat);
-            led.position.set(x, 0.18, z);
-            board.add(led);
+            const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 12, 12), ledMat);
+            mesh.position.set(x, 0.18, z);
+            board.add(mesh);
 
             const spriteMat = new THREE.SpriteMaterial({
                 map: makeGlowTexture(rgb),
@@ -378,15 +380,33 @@
             sprite.scale.set(glowScale, glowScale, 1);
             sprite.position.set(x, 0.18, z);
             board.add(sprite);
+
+            const entry = { mesh, sprite, restEmissive, restSpriteScale: glowScale, pulseT: 0 };
+            if (!leds[name]) leds[name] = [];
+            leds[name].push(entry);
         }
 
-        // Cyan status LEDs
-        addLed(1.3, 0.4, 0x00ffea, '0,255,234', 0.07, 0.55);
-        addLed(1.3, 0.1, 0x00ffea, '0,255,234', 0.07, 0.55);
-        addLed(1.3, -0.2, 0x00ffea, '0,255,234', 0.07, 0.55);
+        // Cyan status LEDs (grouped under 'cyan')
+        addLed('cyan', 1.3, 0.4, 0x00ffea, '0,255,234', 0.07, 0.55);
+        addLed('cyan', 1.3, 0.1, 0x00ffea, '0,255,234', 0.07, 0.55);
+        addLed('cyan', 1.3, -0.2, 0x00ffea, '0,255,234', 0.07, 0.55);
         // Yellow power LED and red TX LED near USB
-        addLed(-0.9, -0.25, 0xffd23f, '255,210,63', 0.06, 0.48);
-        addLed(-0.75, -0.05, 0xff3a3a, '255,58,58', 0.06, 0.44);
+        addLed('power', -0.9, -0.25, 0xffd23f, '255,210,63', 0.06, 0.48);
+        addLed('tx',    -0.75, -0.05, 0xff3a3a, '255,58,58',  0.06, 0.44);
+
+        // Public API for external code (arduino-sketch.js)
+        window.arduinoBoard = {
+            pulse(name) {
+                const group = leds[name];
+                if (!group) return;
+                for (const e of group) e.pulseT = 1.0;
+            },
+            pulseAll() {
+                for (const g of Object.values(leds)) {
+                    for (const e of g) e.pulseT = 1.0;
+                }
+            }
+        };
 
         board.rotation.x = -0.25;
         board.scale.setScalar(0.88);
@@ -481,6 +501,19 @@
             board.position.y = Math.sin(t * 1.2) * 0.15;
 
             glow.material.opacity = 0.65 + Math.sin(t * 1.2) * 0.15;
+
+            // Decay LED pulses
+            for (const group of Object.values(leds)) {
+                for (const e of group) {
+                    if (e.pulseT > 0) {
+                        e.pulseT = Math.max(0, e.pulseT - 0.04);
+                        const boost = e.pulseT * e.pulseT;
+                        e.mesh.material.emissiveIntensity = e.restEmissive + boost * 3.0;
+                        const s = e.restSpriteScale * (1 + boost * 1.8);
+                        e.sprite.scale.set(s, s, 1);
+                    }
+                }
+            }
 
             render();
             requestAnimationFrame(loop);

@@ -66,9 +66,31 @@
             </div>
         </section>
 
-        <!-- ═══════════════ 3D ARDUINO ═══════════════ -->
-        <section class="arduino-scene" aria-label="Hovering 3D Arduino board">
-            <canvas class="arduino-canvas" id="arduinoCanvas" role="img" aria-label="Animated 3D Arduino board rotating slowly"></canvas>
+        <!-- ═══════════════ 3D ARDUINO + LIVE CODE ═══════════════ -->
+        <section class="arduino-scene" aria-label="Hovering 3D Arduino board with live code">
+            <div class="arduino-stage">
+                <canvas class="arduino-canvas" id="arduinoCanvas" role="img" aria-label="Animated 3D Arduino board rotating slowly"></canvas>
+            </div>
+            <div class="arduino-code" aria-hidden="true">
+                <div class="code-pane" id="codePaneIno">
+                    <div class="code-tab">
+                        <span class="tab-dot d-red"></span>
+                        <span class="tab-dot d-yellow"></span>
+                        <span class="tab-dot d-green"></span>
+                        <span class="tab-name">portfolio.ino</span>
+                    </div>
+                    <pre class="code-body"><code id="codeBodyIno"></code></pre>
+                </div>
+                <div class="code-pane" id="codePaneCs">
+                    <div class="code-tab">
+                        <span class="tab-dot d-red"></span>
+                        <span class="tab-dot d-yellow"></span>
+                        <span class="tab-dot d-green"></span>
+                        <span class="tab-name">Program.cs</span>
+                    </div>
+                    <pre class="code-body"><code id="codeBodyCs"></code></pre>
+                </div>
+            </div>
         </section>
 
         <!-- ═══════════════ ABOUT ═══════════════ -->
@@ -404,5 +426,6 @@
     <script src="main.js" defer></script>
     <script src="https://unpkg.com/three@0.160.0/build/three.min.js" defer></script>
     <script src="arduino3d.js" defer></script>
+    <script src="arduino-sketch.js" defer></script>
 </body>
 </html>
