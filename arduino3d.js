@@ -386,10 +386,10 @@
             leds[name].push(entry);
         }
 
-        // Cyan status LEDs (grouped under 'cyan')
-        addLed('cyan', 1.3, 0.4, 0x00ffea, '0,255,234', 0.07, 0.55);
-        addLed('cyan', 1.3, 0.1, 0x00ffea, '0,255,234', 0.07, 0.55);
-        addLed('cyan', 1.3, -0.2, 0x00ffea, '0,255,234', 0.07, 0.55);
+        // Cyan status LEDs (grouped under 'cyan') — placed in a row below the chip
+        addLed('cyan', 0.1, 0.75, 0x00ffea, '0,255,234', 0.07, 0.55);
+        addLed('cyan', 0.4, 0.75, 0x00ffea, '0,255,234', 0.07, 0.55);
+        addLed('cyan', 0.7, 0.75, 0x00ffea, '0,255,234', 0.07, 0.55);
         // Yellow power LED and red TX LED near USB
         addLed('power', -0.9, -0.25, 0xffd23f, '255,210,63', 0.06, 0.48);
         addLed('tx',    -0.75, -0.05, 0xff3a3a, '255,58,58',  0.06, 0.44);
