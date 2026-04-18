@@ -45,11 +45,11 @@
         gctx.fillRect(0, 0, 256, 256);
         const glowTex = new THREE.CanvasTexture(glowCanvas);
         const glow = new THREE.Mesh(
-            new THREE.PlaneGeometry(6, 6),
+            new THREE.PlaneGeometry(4.2, 4.2),
             new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false })
         );
         glow.rotation.x = -Math.PI / 2;
-        glow.position.y = -1.0;
+        glow.position.y = -0.6;
         scene.add(glow);
 
         // Board assembly
